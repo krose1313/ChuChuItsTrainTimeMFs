@@ -1,0 +1,28 @@
+th {
+  font-weight: 800;
+}
+
+.jumbotron {
+	margin-top: 10%
+    margin-bottom: 0px;
+    background-image: url(../images/train_2.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+
+.text-cneter {
+	color: grey;
+}
+
+.card-header {
+	color: white;
+	font-weight: bold;
+	background-color: #27264c;
+}
+
+.form-group {
+	font-weight: bold;
+}

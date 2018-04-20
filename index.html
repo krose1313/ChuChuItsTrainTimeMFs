@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Train Time</title>
+
+    <link rel="stylesheet"
+          href="./assets/css/reset.css">
+    <link rel="stylesheet"
+          href="./assets/bootstrap/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h2 class="text-center">You're off to great places today is your day!</h2>
+        <h3 class="text-center">Your mountain is waiting, so get on your way!</h3>
+        <h4 class="text-center">- Dr. Suess</h4>
+      </div>
+
+
+ <div class="container">
+
+    <div class="card mt-4">
+      <div class="card-header">
+        Trains!
+      </div>
+      <div class="card-body">
+        <table class="table table-stripe" id="table">
+          <thead>
+            <tr>
+              <th class="user-data" scope="col">Train Name</th>
+              <th class="user-data" scope="col">Destination</th>
+              <th class="user-data" scope="col">Frequency (min)</th>
+              <th class="user-data" scope="col">Next Arrival</th>
+              <th class="user-data" scope="col">Minutes Away</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        Add a train
+      </div>
+      <div class="card-body px-3">
+        <form id="train-data">
+         <div class="form-group">
+           <label for="trainName" class="mt-4">Train Name</label>
+           <input type="text" class="form-control" id="trainName" placeholder="Train Name">
+           <label for="destination" class="mt-4">Destination</label>
+           <input type="text" class="form-control" id="destination" placeholder="Destination">
+           <label for="firstTrainTime" class="mt-4">First Train Time</label>
+           <input type="time" required class="form-control" id="firstTrainTime" placeholder="First train time">
+           <label for="trainName" class="mt-4">Frequency</label>
+           <input type="number" required class="form-control" id="frequency" placeholder="frequency">
+           <button type="submit" class="btn btn-primary mt-4" id="trainSubmit">Submit</button>
+        
+         </div>
+           </form>
+      </div>
+    </div>
+ </div>
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script type="text/javascript" src="./assets/js/scripts.js">
+    </script>
+</body>
+
+</html>
