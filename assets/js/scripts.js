@@ -1,5 +1,5 @@
 
-// Initialize Firebase
+// Initialize Firebase and add Firebase configs
 var config = {
 apiKey: "AIzaSyBpbio7NfAYedYz6b3TH1EsiF00RCXtTls",
 authDomain: "chuchu-27407.firebaseapp.com",
@@ -15,21 +15,21 @@ var database = firebase.database();
 var trainRef = database.ref().child("trains");
 var trainsSnapshot = {};
 
-//update the trains variable when it is changed
+//update train "table" in firebase when the user enters train info
 database.ref("trains").on("value", function(snapshot) {
 	trainsSnapshot = snapshot.val();
 
 });
 
-// on submit button click
+// user submits a new train with new data 
 $("#trainSubmit").on("click", function() {
 	event.preventDefault();
-	// get the value from the inputs
+	// trim the values the user enters
 	var name = $("#trainName").val();
 	var destination = $("#destination").val();
 	var ftt = $("#firstTrainTime").val();
 	var frequency = $("#frequency").val();
-	//push a new object to "trains"
+	//push the trimmed data the user enters to the Firebase db
 	trainRef.push().set({
 		name: name,
 		destination: destination,
@@ -39,8 +39,8 @@ $("#trainSubmit").on("click", function() {
 		$("input").val("");
 })
 
+//user inputs a new train and this function update that data to the 'tbody' section of the HTML
 function addNewTrain(train, key) {
-	// the difference betwenn first train and now
 	
 	var row = $("<tr>").attr("id",key);
 	
@@ -65,18 +65,18 @@ function calcTrainInfo(train, key) {
 		var mult = diff - mod;
 		// add mult + one interval length to get next train
 		var lastTrain = moment(train.firstTrainTime, 'HH:mm').add(mult ,'minutes').format('hh:mm a');
-		// console.log(lastTrain);
+
 		nextTrain = (moment(lastTrain, 'hh:mm a')).add(train.frequency,'minutes').format('hh:mm a');
-		// console.log(nextTrain);
+
 		minutesUntil = train.frequency - mod;
 
 	}
  
 	var trainTime = moment(train.ftt, 'HH:mm')._i; 
 	var row = $("#" + key);
-	// make it empty
+
 	$(row).empty();
-	// add the cells
+
 
 	var cell = $("<td>");
 	var name = $(cell).clone().html(train.name);
@@ -106,7 +106,7 @@ $(document).ready(function() {
 	});
 	
 
-	//re-add all the trains relative to the current time
+	//set train times relevant to current time for user
 	var update = setInterval(function() {
 		$("tbody").empty();
 		$.each(trainsSnapshot, function(key,value) {
